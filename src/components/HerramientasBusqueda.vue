@@ -10,12 +10,14 @@
       </div>
       <div class="text-field">
         <v-text-field
+          v-model="nombrePersonaje"
           placeholder="Nombre del personaje"
           solo
         ></v-text-field>
       </div>
       <div class="boton">
         <v-btn
+          @click="buscarPersonaje"
           color="#08B2CA"
           class="white--text"
         >Buscar</v-btn>
@@ -28,7 +30,7 @@ export default {
   name: 'HerramientasBusqueda',
   data() {
     return {
-      texto: 'herramientas',
+      nombrePersonaje: '',
       items: [
         {
           text: 'Vivo',
@@ -45,6 +47,11 @@ export default {
       ],
       estadoPersonaje: 'alive',
     };
+  },
+  methods: {
+    buscarPersonaje() {
+      this.$emit('buscar-personaje', this.estadoPersonaje, this.nombrePersonaje);
+    },
   },
 };
 </script>
