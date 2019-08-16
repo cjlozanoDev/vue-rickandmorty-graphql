@@ -26,9 +26,8 @@
       </v-img>
      <v-card-text>
       <div class="informacion">
-        <div class="informacion-fila">
-            <span> Nombre: </span>
-            <span class="informacion__texto">
+        <div class="informacion-fila name">
+            <span class="informacion__texto name">
                 {{ personaje.name }}
             </span>
         </div>
@@ -98,8 +97,14 @@ div /deep/ .v-card__text {
   display: flex;
   justify-content: space-between;
 }
+.informacion-fila.name {
+  justify-content: center;
+}
 .informacion__texto {
   font-weight: bold;
+}
+.informacion__texto.name{
   text-transform: uppercase;
+  margin-bottom: 10px;
 }
 </style>
