@@ -1,20 +1,28 @@
 <template>
-  <div>
+  <div class="home">
     <HerramientasBusqueda
       @buscar-personaje="buscarPersonaje"/>
+    <ListadoPersonajes />
+    <v-overlay :value="loading">
+     <v-progress-circular indeterminate size="64"></v-progress-circular>
+    </v-overlay>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
 import HerramientasBusqueda from '../components/HerramientasBusqueda.vue';
+import ListadoPersonajes from '../components/ListadoPersonajes.vue';
 
 export default {
-  name: 'App',
+  name: 'Home',
   components: {
     HerramientasBusqueda,
+    ListadoPersonajes,
   },
   data() {
-    return {};
+    return {
+      loading: false,
+    };
   },
   computed: {
     ...mapGetters({
@@ -23,10 +31,13 @@ export default {
   },
   methods: {
     buscarPersonaje(estado, nombre) {
+      this.loading = true;
       this.$store.dispatch('obtenerPersonajes', {
         nombre,
         estado,
         apollo: this.$apollo,
+      }).then(() => {
+        this.loading = false;
       });
     },
   },

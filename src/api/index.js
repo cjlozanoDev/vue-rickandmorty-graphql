@@ -12,6 +12,7 @@ const obtenerPersonajes = payload => payload.apollo.query({
             name
             status
             species
+            gender
             image
           }
         }
