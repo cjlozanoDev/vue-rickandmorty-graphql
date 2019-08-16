@@ -27,7 +27,7 @@ export default {
 <style scoped>
 .app {
   min-height: 100%;
-  background-color: #F4F4F4;
+  background-color: #08B2;
 }
 .section {
   padding: 20px
