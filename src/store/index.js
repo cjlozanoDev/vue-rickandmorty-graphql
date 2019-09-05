@@ -8,6 +8,7 @@ Vue.use(Vuex);
 
 const state = {
   listadoPersonajes: [],
+  infoListadoPersonajes: {},
 };
 
 const store = new Vuex.Store({

@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
-const obtenerPersonajes = payload => payload.apollo.query({
+const obtenerPersonajes = (payload, pagina = 1) => payload.apollo.query({
   query: gql`{
-        characters(filter: {name: "${payload.nombre}", status: "${payload.estado}"}) {
+        characters(page: ${pagina},filter: {name: "${payload.nombre}", status: "${payload.estado}"}) {
           info {
             count
             next

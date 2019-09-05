@@ -41,19 +41,20 @@ export default {
   computed: {
     ...mapGetters({
       listadoPersonajes: 'listadoPersonajes',
+      infoListadoPersonajes: 'infoListadoPersonajes',
     }),
     numeroPaginasTotales() {
       if (this.listadoPersonajes.length === 0) {
         return 0;
       }
-      return Math.ceil(this.listadoPersonajes.results.length / this.numeroTarjetasPorPagina);
+      return Math.ceil(this.listadoPersonajes.length / this.numeroTarjetasPorPagina);
     },
     listadoFiltrado() {
       if (this.listadoPersonajes.length === 0) {
         return this.listadoPersonajes;
       }
       const indiceComienzo = (this.paginaActual - 1) * this.numeroTarjetasPorPagina;
-      const arrayFiltrado = this.listadoPersonajes.results.slice(indiceComienzo, indiceComienzo
+      const arrayFiltrado = this.listadoPersonajes.slice(indiceComienzo, indiceComienzo
         + this.numeroTarjetasPorPagina);
       return arrayFiltrado;
     },
